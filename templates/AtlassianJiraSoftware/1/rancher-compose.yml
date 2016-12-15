@@ -1,8 +1,8 @@
 .catalog:
   name: Atlassian JIRA Software
-  version: 7.3.2
+  version: 7.2.3
   description: Atlassian JIRA Software agile software development tool
-  uuid: atlassian-jira-software-7-1-4
+  uuid: atlassian-jira-software-7-2-3
   upgrade_from: 7.1.2
 
 JIRA-Software:
