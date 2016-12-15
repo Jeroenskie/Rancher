@@ -1,6 +1,6 @@
 .catalog:
   name: Atlassian JIRA Software
-  version: 7.1.3
+  version: 7.3.2
   description: Atlassian JIRA Software agile software development tool
   uuid: atlassian-jira-software-7-1-4
   upgrade_from: 7.1.2
@@ -8,7 +8,7 @@
 JIRA-Software:
   scale: 1
   health_check:
-    port: 80
+    port: 8080
     interval: 2000
     recreate_on_quorum_strategy_config:
       quorum: 1
