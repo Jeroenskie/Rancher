@@ -1,6 +1,6 @@
 JIRA-Software:
   hostname: jira-software
-  image: jeroenskie/jira:7.2.3/jira-software:7.2.3
+  image: jeroenskie/jira:7.2.3
   volumes:
   - /data/jira/home:/var/atlassian/jira
   - /data/jira/log:/opt/atlassian/jira/logs
