@@ -3,6 +3,7 @@
   version: 7.1.2.x
   description: Atlassian JIRA Software agile software development tool
   uuid: atlassian-jira-software-7-1-2-x
+  upgrade_from: 7.1.2
 
 JIRA-Software:
   scale: 1
