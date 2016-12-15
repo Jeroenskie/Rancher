@@ -1,5 +1,9 @@
 JIRA-Software:
+<<<<<<< HEAD
   hostname: JIRA
+=======
+  hostname: jira-software
+>>>>>>> origin/master
   image: jeroenskie/jira:7.2.3
   volumes:
   - /data/jira/home:/var/atlassian/jira
@@ -7,4 +11,8 @@ JIRA-Software:
   environment:
     JAVA_OPTS: -Djava.awt.headless=true -Xms1024m -Xmx2048m
   expose:
+<<<<<<< HEAD
   - "8080:8080"
+=======
+  - "8080"
+>>>>>>> origin/master
