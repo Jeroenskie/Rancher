@@ -1,0 +1,10 @@
+JIRA-Software:
+  hostname: JIRA
+  image: jeroenskie/jira:7.3.2
+  volumes:
+  - /data/jira/home:/var/atlassian/jira
+  - /data/jira/log:/opt/atlassian/jira/logs
+  environment:
+    JAVA_OPTS: -Djava.awt.headless=true -Xms1536m -Xmx2560m -Datlassian.plugins.enable.wait=300
+  ports:
+  - "8080:8080"
