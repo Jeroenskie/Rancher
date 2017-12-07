@@ -35,8 +35,8 @@ services:
     - back
     - lb_web
     ports:
-    - "80:80"
-    - "433:433"
+    - "81:81"
+    - "8433:8433"
   cron:
     image: piwik:fpm
     links:
