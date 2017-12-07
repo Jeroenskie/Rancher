@@ -40,11 +40,14 @@ services:
       - "8080:80"
       - "8443:443"
   cron:
+     labels:
+      io.rancher.container.pull_image: always
+    tty: true
     image: piwik
     links:
-      - db
-    volumes_from:
-      - app
+      - db:mysql
+      - app:piwik
+    stdin_open: true
     entrypoint: |
       bash -c 'bash -s <<EOF
       trap "break;exit" SIGHUP SIGINT SIGTERM
