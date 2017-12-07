@@ -1,4 +1,22 @@
 version: '2'
+services:
+  web:
+    labels:
+      io.rancher.container.pull_image: always
+    tty: true
+    image: sdelements/lets-chat
+    links:
+    - database:mongo
+    stdin_open: true
+  database:
+    labels:
+      io.rancher.container.pull_image: always
+    tty: true
+    image: mongo
+    stdin_open: true
+
+
+version: '2'
 networks:
   # lb_web:
   #   external: true
@@ -27,8 +45,8 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     links:
       - app
-    volumes_from:
-      - app
+##    volumes_from:
+##      - app
     environment:
       - VIRTUAL_HOST
     networks:
@@ -37,3 +55,19 @@ services:
     ports:
       - "8080:80"
       - "8443:443"
+  cron:
+    image: piwik
+    links:
+      - db
+ ##   volumes_from:
+ ##     - app
+    entrypoint: |
+      bash -c 'bash -s <<EOF
+      trap "break;exit" SIGHUP SIGINT SIGTERM
+      while /bin/true; do
+        su -s "/bin/bash" -c "/usr/local/bin/php /var/www/html/console core:archive" www-data
+        sleep 3600
+      done
+      EOF'
+    networks:
+      - back
