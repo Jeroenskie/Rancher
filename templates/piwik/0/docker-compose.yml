@@ -1,3 +1,18 @@
+ helper-sidekick:
+    image: nginx:latest
+    labels:
+       io.rancher.container.start_once: true
+  primary-service:
+    image: alpine:3.5
+    entrypoint: /somedir/entrypoint.sh
+    labels:
+        io.rancher.sidekicks: helper-sidekick
+    volumes:
+      - website:/srv/http
+    volumes_from:
+      - helper-sidekick
+      - web-service
+----------------------------------------------
 version: '2'
 networks:
   lb_web:
