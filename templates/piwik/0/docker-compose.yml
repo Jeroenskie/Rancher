@@ -41,7 +41,7 @@ services:
       - "8443:443"
   cron:
      labels:
-      io.rancher.container.pull_image: always
+     io.rancher.container.pull_image: always
     tty: true
     image: piwik
     links:
