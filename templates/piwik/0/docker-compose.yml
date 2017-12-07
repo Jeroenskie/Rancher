@@ -1,7 +1,7 @@
 version: '2'
 networks:
-  lb_web:
-    external: false
+  # lb_web:
+  #   external: true
   back:
     driver: bridge
 services:
@@ -12,15 +12,15 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD
     networks:
-    - back
+      - back
   app:
-    image: piwik:fpm
+    image: piwik
     links:
       - db
     volumes:
       - ./config:/var/www/html/config
     networks:
-    - back
+      - back
   web:
     image: nginx
     volumes:
@@ -32,13 +32,13 @@ services:
     environment:
       - VIRTUAL_HOST
     networks:
-    - back
-    - lb_web
+      - back
+      # - lb_web
     ports:
-    - "81:81"
-    - "8433:8433"
+      - "8080:80"
+      - "8443:443"
   cron:
-    image: piwik:fpm
+    image: piwik
     links:
       - db
     volumes_from:
@@ -52,4 +52,4 @@ services:
       done
       EOF'
     networks:
-    - back
+      - back
