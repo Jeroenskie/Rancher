@@ -1,22 +1,4 @@
 version: '2'
-services:
-  web:
-    labels:
-      io.rancher.container.pull_image: always
-    tty: true
-    image: sdelements/lets-chat
-    links:
-    - database:mongo
-    stdin_open: true
-  database:
-    labels:
-      io.rancher.container.pull_image: always
-    tty: true
-    image: mongo
-    stdin_open: true
-
-
-version: '2'
 networks:
   # lb_web:
   #   external: true
